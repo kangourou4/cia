@@ -7,6 +7,7 @@ class Vorace:
         self.reveille=False
         self.lieu="absent"
         self.specialite=""
+        self.ip=""
         if motivation>0.1:
             self.motivation=True
         else:
@@ -49,12 +50,16 @@ class Vorace:
         if h>=7 and m>10:
             self.lieu="Bureau"
             self.reveille=True
+    def update_ip(self,chiffre):
+        self.ip="192.168.10."+str(chiffre)
+
 
 class SDI:
     "Creation d'un SDI"
     def __init__(self,heure,minute):
         motivation=rd.random()
         self.TTPP=False
+        self.ip=""
         self.reveille=False
         self.lieu="peigne"
         if motivation>0.1:
@@ -107,6 +112,8 @@ class SDI:
         if m>0.9:
             self.TTPP=True
             self.lieu="peigne"
+    def update_ip(self,chiffre):
+        self.ip="192.168.20."+str(chiffre)
 
 class SSP:
     "Creation d'un SSP"
@@ -114,6 +121,7 @@ class SSP:
         self.TTPP=False
         self.reveille=False
         self.lieu="peigne"
+        self.ip=""
         self.specialite=""
         motivation=rd.random()
         if motivation>0.1:
@@ -154,6 +162,8 @@ class SSP:
         if m>0.65:
             self.TTPP=True
             self.lieu="peigne"
+    def update_ip(self,chiffre):
+        self.ip="192.168.30."+str(chiffre)
 
 
 

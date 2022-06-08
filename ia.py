@@ -41,9 +41,13 @@ def reveil_class(start_h,start_min,population):
                 elif nom[0:3]=="ssp":
                     alea=rd.randint(1,len(requete_loisir["ssp"+"_"+str(personne.lieu)]))
                     requete=requete_loisir["ssp"+"_"+str(personne.lieu)][alea]
-                f.write(f"{str(start_h)}:{str(start_min)} : requête {requete} effectuée par {nom} {personne.specialite}\n".format(start_h,start_min,requete,nom,personne.specialite))
+                if len(requete.split('_'))>1:
+                    pass
+                else:
+                    f.write(f"{str(start_h)}:{str(start_min)} : requête {requete} effectuée par {nom} {personne.specialite}\n".format(start_h,start_min,requete,nom,personne.specialite))
             if not personne.reveille:
-                f.write(f"{str(start_h)}:{str(start_min)} : oups je suis {nom} {personne.specialite} et je dors \n".format(start_h,start_min,nom,personne.specialite))
+                #f.write(f"{str(start_h)}:{str(start_min)} : oups je suis {nom} {personne.specialite} et je dors \n".format(start_h,start_min,nom,personne.specialite))
+                pass
             personne.update_reveil(start_h,start_min)
             if personne.lieu=="absent":    
                 personne.update_arrivee(start_h,start_min)
@@ -79,7 +83,10 @@ def apres_rasso_class(start_h,start_min,population):
                         requete=requete_loisir["ssp"+"_"+str(personne.lieu)][rd.randint(1,len(requete_loisir["ssp"+"_"+str(personne.lieu)]))]
                     else:
                         requete=requete_travail["ssp"+"_"+str(personne.lieu)][rd.randint(1,len(requete_travail["ssp"+"_"+str(personne.lieu)]))]
-                f.write(f"{str(start_h)}:{str(start_min)} : requête {requete} effectuée par {nom} {personne.specialite}\n".format(start_h,start_min,requete,nom,personne.specialite))
+                if len(requete.split('_'))>1:
+                    pass
+                else:
+                    f.write(f"{str(start_h)}:{str(start_min)} : requête {requete} effectuée par {nom} {personne.specialite}\n".format(start_h,start_min,requete,nom,personne.specialite))
 
             personne.update_reveil(start_h,start_min)
         start_min+=1
@@ -107,7 +114,10 @@ def cours_matin(start_h,start_min,population):
                             requete=requete_travail["sdi"+"_"+str(personne.lieu)+"_"+str(personne.specialite)][rd.randint(1,len(requete_travail["sdi"+"_"+str(personne.lieu)+"_"+str(personne.specialite)]))]
                         elif nom[0:3]=="ssp":
                             requete=requete_travail["ssp"+"_"+str(personne.lieu)][rd.randint(1,len(requete_travail["ssp"+"_"+str(personne.lieu)]))]
-                        f.write(f"{str(start_h)}:{str(start_min)} : requête {requete} effectuée par {nom} {personne.specialite}\n".format(start_h,start_min,requete,nom,personne.specialite))
+                        if len(requete.split('_'))>1:
+                            pass
+                        else:
+                            f.write(f"{str(start_h)}:{str(start_min)} : {requete} {personne.ip}\n".format(start_h,start_min,requete,personne.ip))
                     else:
                         if nom[0:1]=='v':
                             requete=requete_loisir["voraces"+"_"+str(personne.lieu)][rd.randint(1,len(requete_loisir["voraces"+"_"+str(personne.lieu)]))]
@@ -115,7 +125,10 @@ def cours_matin(start_h,start_min,population):
                             requete=requete_loisir["sdi"+"_"+str(personne.lieu)+"_"+str(personne.specialite)][rd.randint(1,len(requete_loisir["sdi"+"_"+str(personne.lieu)+"_"+str(personne.specialite)]))]
                         elif nom[0:3]=="ssp":
                             requete=requete_loisir["ssp"+"_"+str(personne.lieu)][rd.randint(1,len(requete_loisir["ssp"+"_"+str(personne.lieu)]))]
-                        f.write(f"{str(start_h)}:{str(start_min)} : requête {requete} effectuée par {nom} {personne.specialite}\n".format(start_h,start_min,requete,nom,personne.specialite))
+                        if len(requete.split('_'))>1:
+                            pass
+                        else:
+                            f.write(f"{str(start_h)}:{str(start_min)} : {requete} {personne.ip}\n".format(start_h,start_min,requete,personne.ip))
             personne.update_lieu()
             personne.update_motivation()
         start_min+=1
