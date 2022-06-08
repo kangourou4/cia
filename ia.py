@@ -3,17 +3,17 @@ import random as rd
 from creation_pop import *
 
 requete_travail={"voraces_Bureau":{1:"mail_peigne",2:"ENT_peigne",3:"Google_peigne"},
-                    "sdi_DGER_cyber":{1:"mail",2:"moodle",3:"Cyber Range",4:"Cyber Range",5:"Cyber Range"},
+                    "sdi_DGER_cyber":{1:"mail",2:"moodle",3:"cyberrange",4:"cyberrange",5:"cyberrange"},
                     "sdi_peigne_cyber":{1:"mail_peigne",2:"moodle_peigne",3:"ENT_peigne"},
-                    "sdi_DGER_simu":{1:"mail",2:"moodle",3:"Doc Unreal Engine",4:"Doc Unreal Engine",5:"Youtube",6:"Youtube"},
+                    "sdi_DGER_simu":{1:"mail",2:"moodle",3:"docunrealengine",4:"docunrealengine",5:"youtube",6:"youtube"},
                     "sdi_peigne_simu":{1:"mail_peigne",2:"moodle_peigne",3:"ENT_peigne"},
-                    "sdi_DGER_RO":{1:"mail",2:"moodle",3:"Visual Studio",4:"Visual Studio",5:"Visual Studio"},
+                    "sdi_DGER_RO":{1:"mail",2:"moodle",3:"visualstudio",4:"visualstudio",5:"visualstudio"},
                     "sdi_peigne_RO":{1:"mail_peigne",2:"moodle_peigne",3:"ENT_peigne"},
                     "sdi_DGER_meca":{1:"mail",2:"moodle",3:"matlab",4:"matlab",5:"matlab"},
                     "sdi_peigne_meca":{1:"mail_peigne",2:"moodle_peigne",3:"ENT_peigne"},
                     "sdi_DGER_elec":{1:"mail",2:"moodle",3:"matlab",4:"matlab",5:"matlab"},
                     "sdi_peigne_elec":{1:"mail_peigne",2:"moodle_peigne",3:"ENT_peigne"},
-                    "ssp_DGER":{1:"mail",2:"moodle",3:"Office 365"},
+                    "ssp_DGER":{1:"mail",2:"moodle",3:"office365"},
                     "ssp_peigne":{1:"mail_peigne",2:"moodle_peigne",3:"ENT_peigne"}}
 requete_loisir={"voraces_Bureau":{1:"fb_peigne",2:"wa_peigne",3:"insta_peigne"},
                     "sdi_DGER_cyber":{1:"fb",2:"wa",3:"insta"},
@@ -117,7 +117,7 @@ def cours_matin(start_h,start_min,population):
                         if len(requete.split('_'))>1:
                             pass
                         else:
-                            f.write(f"{str(start_h)}:{str(start_min)} : {requete} {personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            f.write(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
                     else:
                         if nom[0:1]=='v':
                             requete=requete_loisir["voraces"+"_"+str(personne.lieu)][rd.randint(1,len(requete_loisir["voraces"+"_"+str(personne.lieu)]))]
@@ -128,7 +128,7 @@ def cours_matin(start_h,start_min,population):
                         if len(requete.split('_'))>1:
                             pass
                         else:
-                            f.write(f"{str(start_h)}:{str(start_min)} : {requete} {personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            f.write(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
             personne.update_lieu()
             personne.update_motivation()
         start_min+=1
