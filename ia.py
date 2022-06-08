@@ -1,6 +1,9 @@
 import time
 import random as rd
 from creation_pop import *
+import sys
+import os
+interface = sys.argv[1]
 
 requete_travail={"voraces_Bureau":{1:"mail_peigne",2:"ENT_peigne",3:"Google_peigne"},
                     "sdi_DGER_cyber":{1:"mail",2:"moodle",3:"cyberrange",4:"cyberrange",5:"cyberrange"},
@@ -119,6 +122,10 @@ def cours_matin(start_h,start_min,population):
                         else:
                             f.write(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
                             print(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            try:
+                                os.system("tcpreplay-edit"+" --mtu-trunc "+ " -i " + interface +" " +" --srcipmap=0.0.0.0/0:"+personne.ip + "/32 "+ " ../requetes/"+requete+".pcap" )
+                            except: 
+                                os.system("tcpreplay-edit"+" --mtu-trunc "+ " -i " + interface +" " +" --srcipmap=0.0.0.0/0:"+personne.ip + "/32 "+ " ../requetes/google.pcap" )
                             time.sleep(rd.randint(1,5))
                     else:
                         if nom[0:1]=='v':
@@ -132,6 +139,12 @@ def cours_matin(start_h,start_min,population):
                         else:
                             f.write(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
                             print(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            try:
+                                os.system("tcpreplay-edit"+" --mtu-trunc "+ " -i " + interface +" " +" --srcipmap=0.0.0.0/0:"+personne.ip + "/32 "+ " ../requetes/"+requete+".pcap" )
+                            except:
+                                os.system("tcpreplay-edit"+" --mtu-trunc "+ " -i " + interface +" " +" --srcipmap=0.0.0.0/0:"+personne.ip + "/32 "+ " ../requetes/google.pcap" )
+                               
+
                             time.sleep(rd.randint(1,5))
             personne.update_lieu()
             personne.update_motivation()
