@@ -118,6 +118,8 @@ def cours_matin(start_h,start_min,population):
                             pass
                         else:
                             f.write(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            print(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            time.sleep(rd.randint(1,5))
                     else:
                         if nom[0:1]=='v':
                             requete=requete_loisir["voraces"+"_"+str(personne.lieu)][rd.randint(1,len(requete_loisir["voraces"+"_"+str(personne.lieu)]))]
@@ -129,8 +131,11 @@ def cours_matin(start_h,start_min,population):
                             pass
                         else:
                             f.write(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            print(f"{str(start_h)}:{str(start_min)}:{requete}:{personne.ip}\n".format(start_h,start_min,requete,personne.ip))
+                            time.sleep(rd.randint(1,5))
             personne.update_lieu()
             personne.update_motivation()
+        
         start_min+=1
         if start_min==60:
             start_h+=1
